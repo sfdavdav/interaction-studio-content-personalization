@@ -9,6 +9,9 @@ import { LightningElement, wire } from 'lwc';
 import userId from '@salesforce/user/Id'
 import { getRecord } from 'lightning/uiRecordApi';
 
+import contactId from '@salesforce/schema/User.ContactId'
+import accountId from '@salesforce/schema/User.AccountId';
+
 export default class InteractionStudioDataCapture extends LightningElement {
     showPlaceholder = false;
 
@@ -24,7 +27,7 @@ export default class InteractionStudioDataCapture extends LightningElement {
         }));
     }
 
-    @wire(getRecord, { recordId: userId, layoutTypes: ['Full'], modes: ['View'] })
+    @wire(getRecord, { recordId: userId, layoutTypes: ['Full'], modes: ['View'] , optionalFields: [contactId, accountId] })
     wiredRecord({ error, data }) {
         if (!userId) {
             this.initInteractionStudio(null);

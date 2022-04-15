@@ -22,6 +22,7 @@ Evergage.init().then(() => {
                     event.user.attributes.experienceCloudUserId = userData?.id;
                     event.user.attributes.emailAddress = userData?.fields?.Email?.value;
                     event.user.attributes.companyName = userData?.fields?.CompanyName?.value;
+                    event.user.attributes.sfcrmContactId = userData?.fields?.ContactId?.value;
                 }
 
                 return event;
